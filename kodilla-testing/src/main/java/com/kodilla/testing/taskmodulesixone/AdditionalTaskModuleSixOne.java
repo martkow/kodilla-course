@@ -2,7 +2,7 @@
 //Na przykład dla napisu “Adam” zwróci tylko “Aa”.
 //Kluczowy algorytm zamknij w osobnej funkcji/metodzie, która będzie przyjmowała 1 argument wejściowy.
 //Funkcja ta nie powinna wypisać niczego na ekran.
-package com.kodilla.testing;
+package com.kodilla.testing.taskmodulesixone;
 
 import java.util.HashSet;
 import java.util.List;
