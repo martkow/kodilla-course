@@ -58,9 +58,8 @@ public class ShapeCollectorTestSuite {
             shapeCollector.addShape(triangle);
             shapeCollector.addShape(square);
             // When
-            boolean result = shapeCollector.removeShape(square);
+            shapeCollector.removeShape(square);
             // Then
-            Assertions.assertTrue(result);
             Assertions.assertFalse(shapeCollector.getShapes().contains(square));
         }
 
@@ -70,9 +69,9 @@ public class ShapeCollectorTestSuite {
             // Given
             ShapeCollector shapeCollector = new ShapeCollector();
             // When
-            boolean result = shapeCollector.removeShape(new Triangle(2, 12.5));
+            shapeCollector.removeShape(new Triangle(2, 12.5));
             // Then
-            Assertions.assertFalse(result);
+            Assertions.assertFalse(shapeCollector.getShapes().contains(new Square(10.5)));
         }
 
 

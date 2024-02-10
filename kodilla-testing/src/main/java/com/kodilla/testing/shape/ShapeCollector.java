@@ -14,14 +14,10 @@ public class ShapeCollector {
         shapes.add(shape);
     }
 
-    public boolean removeShape(Shape shape) {
-        boolean wasRemoved = false;
-
+    public void removeShape(Shape shape) {
         while (shapes.contains(shape)) {
-            wasRemoved = shapes.remove(shape);
+           shapes.remove(shape);
         }
-
-        return wasRemoved;
     }
 
     public Shape getShape(int shapeIndex) {
