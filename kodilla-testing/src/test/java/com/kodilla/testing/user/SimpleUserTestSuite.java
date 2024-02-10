@@ -1,6 +1,5 @@
-package com.kodilla.testing.forum;
+package com.kodilla.testing.user;
 
-import com.kodilla.testing.user.SimpleUser;
 import org.junit.jupiter.api.*;
 
 @DisplayName("Tests for SimpleUser class")

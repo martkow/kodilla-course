@@ -1,11 +1,5 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.collection.OddNumbersExterminator;
-import com.kodilla.testing.taskmodulesixone.AdditionalTaskModuleSixOne;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class TestingMain {
     public static void main(String[] args) {
         System.out.println("Moduł 6. Wprowadzenie do testowania oprogramowania");
