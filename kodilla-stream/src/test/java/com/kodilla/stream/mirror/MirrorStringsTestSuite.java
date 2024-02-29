@@ -23,7 +23,7 @@ public class MirrorStringsTestSuite {
         // Given
         String s = "Bubu";
         // When
-        String reversedS = MirrorStrings.mirrorString(s);
+        String reversedS = MirrorStrings.mirrorStringStream(s);
         // Then
         Assertions.assertEquals("ubuB", reversedS);
     }
