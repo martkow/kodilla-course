@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.solid.product;
+package com.kodilla.good.patterns.challenges.solid.product.order.product;
 
 public class Product {
     private long productNumber;

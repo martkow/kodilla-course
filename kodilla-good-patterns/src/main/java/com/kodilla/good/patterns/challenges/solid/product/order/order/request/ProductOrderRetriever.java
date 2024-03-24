@@ -1,8 +1,7 @@
-package com.kodilla.good.patterns.challenges.solid.order.request;
+package com.kodilla.good.patterns.challenges.solid.product.order.order.request;
 
-import com.kodilla.good.patterns.challenges.solid.order.request.ProductOrderRequest;
-import com.kodilla.good.patterns.challenges.solid.product.Product;
-import com.kodilla.good.patterns.challenges.solid.user.User;
+import com.kodilla.good.patterns.challenges.solid.product.order.product.Product;
+import com.kodilla.good.patterns.challenges.solid.product.order.user.User;
 
 import java.time.LocalDateTime;
 

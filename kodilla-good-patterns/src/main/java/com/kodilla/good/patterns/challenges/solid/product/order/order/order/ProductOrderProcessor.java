@@ -1,8 +1,8 @@
-package com.kodilla.good.patterns.challenges.solid.order.order;
+package com.kodilla.good.patterns.challenges.solid.product.order.order.order;
 
-import com.kodilla.good.patterns.challenges.solid.ntf.InformationService;
-import com.kodilla.good.patterns.challenges.solid.order.repository.ProductOrderRepository;
-import com.kodilla.good.patterns.challenges.solid.order.request.ProductOrderRequest;
+import com.kodilla.good.patterns.challenges.solid.product.order.ntf.InformationService;
+import com.kodilla.good.patterns.challenges.solid.product.order.order.repository.ProductOrderRepository;
+import com.kodilla.good.patterns.challenges.solid.product.order.order.request.ProductOrderRequest;
 
 // to process order - logic of ordering
 public class ProductOrderProcessor {

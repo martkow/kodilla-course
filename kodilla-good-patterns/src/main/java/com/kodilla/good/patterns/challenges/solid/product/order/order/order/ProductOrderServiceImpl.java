@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.solid.order.order;
+package com.kodilla.good.patterns.challenges.solid.product.order.order.order;
 
-import com.kodilla.good.patterns.challenges.solid.order.request.ProductOrderRequest;
+import com.kodilla.good.patterns.challenges.solid.product.order.order.request.ProductOrderRequest;
 
 public class ProductOrderServiceImpl implements ProductOrderService {
     @Override

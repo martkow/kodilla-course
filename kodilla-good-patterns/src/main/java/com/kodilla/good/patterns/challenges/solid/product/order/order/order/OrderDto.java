@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.solid.order.order;
+package com.kodilla.good.patterns.challenges.solid.product.order.order.order;
 
-import com.kodilla.good.patterns.challenges.solid.user.User;
+import com.kodilla.good.patterns.challenges.solid.product.order.user.User;
 
 // data transfer object for order
 public class OrderDto {

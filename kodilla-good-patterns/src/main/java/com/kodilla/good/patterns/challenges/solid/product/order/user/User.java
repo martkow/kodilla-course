@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.solid.user;
+package com.kodilla.good.patterns.challenges.solid.product.order.user;
 
 public class User {
     private static long counter;

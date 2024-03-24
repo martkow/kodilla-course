@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.clean.code;
 
 import com.kodilla.good.patterns.challenges.clean.code.Main;
 import com.kodilla.good.patterns.challenges.clean.code.MovieStore;
