@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.clean.code;
 
 import java.util.List;
 import java.util.Map;

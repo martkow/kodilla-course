@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
+import com.kodilla.good.patterns.challenges.clean.code.Main;
+import com.kodilla.good.patterns.challenges.clean.code.MovieStore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
