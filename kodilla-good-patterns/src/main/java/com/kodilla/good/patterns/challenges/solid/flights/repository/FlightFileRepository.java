@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightFileRepository implements FlightRepository {
-    private static final Path path = Paths.get("kodilla-good-patterns/src/main/resources/flights.txt");
+    private static final Path path = Paths.get("src/main/resources/flights.txt");
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Override

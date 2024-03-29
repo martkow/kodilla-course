@@ -5,8 +5,8 @@ import com.kodilla.good.patterns.challenges.solid.flights.repository.FlightFileR
 import com.kodilla.good.patterns.challenges.solid.flights.repository.FlightRepository;
 import com.kodilla.good.patterns.challenges.solid.flights.search.request.SearchFlightRequest;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SearchServiceImpl implements SearchService {
     private FlightRepository flightRepository = new FlightFileRepository();
@@ -15,9 +15,26 @@ public class SearchServiceImpl implements SearchService {
     public List<Flight> search(SearchFlightRequest searchFlightRequest) {
         List<Flight> flights = flightRepository.retrieve();
 
+        if (searchFlightRequest.getFrom() != null && searchFlightRequest.getTo() != null) {
+            List<Flight> withLayover = new ArrayList<>();
+            for (Flight fromFlight : flights) {
+                if (searchFlightRequest.getFrom().equals(fromFlight.getDeparture().toString())) {
+                    for (Flight toFlight : flights) {
+                        if (searchFlightRequest.getTo().equals(toFlight.getArrival().toString()) && fromFlight.getArrival().equals(toFlight.getDeparture())) {
+                            withLayover.add(fromFlight);
+                            withLayover.add(toFlight);
+                        }
+                    }
+                }
+            }
+            return withLayover.stream()
+                    .distinct()
+                    .toList();
+        }
+
         return flights.stream() // how to get rid of toString() method???
-                .filter(f -> Objects.requireNonNull(searchFlightRequest.getFrom()).equals(f.getDeparture().toString()))
-                .filter(f -> Objects.requireNonNull(searchFlightRequest.getTo()).equals(f.getArrival().toString()))
+                .filter(f -> searchFlightRequest.getFrom() == null || searchFlightRequest.getFrom().equals(f.getDeparture().toString()))
+                .filter(f -> searchFlightRequest.getTo() == null || searchFlightRequest.getTo().equals(f.getArrival().toString()))
                 .toList();
     }
 }
