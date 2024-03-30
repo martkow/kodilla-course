@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.solid.flights.search;
+package com.kodilla.good.patterns.challenges.solid.flights.search.service;
 
 import com.kodilla.good.patterns.challenges.solid.flights.flight.Flight;
 import com.kodilla.good.patterns.challenges.solid.flights.repository.FlightFileRepository;

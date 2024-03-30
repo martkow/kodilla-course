@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.solid.flights;
 
 import com.kodilla.good.patterns.challenges.solid.flights.airport.Airport;
 import com.kodilla.good.patterns.challenges.solid.flights.flight.Flight;
-import com.kodilla.good.patterns.challenges.solid.flights.search.SearchServiceImpl;
+import com.kodilla.good.patterns.challenges.solid.flights.search.service.SearchServiceImpl;
 import com.kodilla.good.patterns.challenges.solid.flights.search.request.SearchFlightRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -27,8 +27,6 @@ public class SearchServiceImplTestSuite {
         // When
         List<Flight> result = searchService.search(searchFlightRequest);
         // Then
-        System.out.println(flights);
-        System.out.println(result);
         Assertions.assertTrue(flights.size() == result.size() && flights.containsAll(result) && result.containsAll(flights));
     }
 
