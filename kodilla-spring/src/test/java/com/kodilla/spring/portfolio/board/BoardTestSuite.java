@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 @DisplayName("Tests for Board class")
@@ -23,6 +24,8 @@ public class BoardTestSuite {
         boolean result = context.containsBean("board");
         // Then
         Assertions.assertTrue(result);
+        Arrays.stream(context.getBeanDefinitionNames())
+                .forEach(System.out::println);
     }
 
     @DisplayName("Test case for addTask method")
