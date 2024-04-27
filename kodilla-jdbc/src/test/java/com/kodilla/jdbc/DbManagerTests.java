@@ -68,7 +68,7 @@ public class DbManagerTests {
         Assertions.assertEquals(13, counter);
     }
 
-    @DisplayName("Test tace for SQL query: retrieving data for USERS and POSTS tables")
+    @DisplayName("Test case for SQL query: retrieving data for USERS and POSTS tables")
     @Test
     void testCaseForQueryUsersAndPosts() throws SQLException {
         // Given
