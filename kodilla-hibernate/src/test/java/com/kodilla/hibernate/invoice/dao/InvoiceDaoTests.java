@@ -9,13 +9,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
+@Transactional
 @DisplayName("Tests for InvoiceDao interface - Data Object Access layer -> Repository controller")
 @SpringBootTest
 public class InvoiceDaoTests {
     @Autowired
     private InvoiceDao invoiceDao;
+
 
     @DisplayName("Test case for save method with saving to related tables: 1:N, N:1")
     @Test
@@ -48,11 +51,11 @@ public class InvoiceDaoTests {
         Assertions.assertNotEquals(0, idInvoice1);
         Assertions.assertNotEquals(0, idInvoice2);
         // Cleanup
-        try {
-            invoiceDao.deleteById(idInvoice1);
-            invoiceDao.deleteById(idInvoice2);
-        } catch (Exception e) {
-            // do nothing
-        }
+//        try {
+//            invoiceDao.deleteById(idInvoice1);
+//            invoiceDao.deleteById(idInvoice2);
+//        } catch (Exception e) {
+//            // do nothing
+//        }
     }
 }

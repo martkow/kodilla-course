@@ -13,7 +13,7 @@ public class TaskList {
     private int id;
     private String listName;
     private String description;
-    private List<Task> taskList = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 
     public TaskList() {
     }
@@ -47,8 +47,8 @@ public class TaskList {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    public List<Task> getTaskList() {
-        return taskList;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     private void setId(int id) {
@@ -63,7 +63,7 @@ public class TaskList {
         this.description = description;
     }
 
-    private void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
+    private void setTasks(List<Task> taskList) {
+        this.tasks = taskList;
     }
 }

@@ -48,8 +48,8 @@ public class TaskListDaoTests {
         task.setTaskFinancialDetails(tfd);
         task2.setTaskFinancialDetails(tfd2);
         TaskList taskList = new TaskList(LIST_NAME, LIST_DESCRIPTION);
-        taskList.getTaskList().add(task);
-        taskList.getTaskList().add(task2);
+        taskList.getTasks().add(task);
+        taskList.getTasks().add(task2);
         task.setTaskList(taskList);
         task2.setTaskList(taskList);
         //When
