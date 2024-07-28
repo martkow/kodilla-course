@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @DisplayName("Test suite for ForumUser class")
 @ExtendWith(MockitoExtension.class)
@@ -66,5 +68,10 @@ public class ForumUserTestSuite {
         // Then
         Assertions.assertEquals(1, result.size());
         Assertions.assertTrue(result.contains("Gdansk"));
+
+        int[] t = new int[0];
+
+        List<String> l = new ArrayList<>();
+        l.stream().collect(Collectors.toSet());
     }
 }
