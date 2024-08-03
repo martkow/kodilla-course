@@ -1,4 +1,4 @@
-package com.kodilla.hibernate.manytomany;
+package com.kodilla.hibernate.manytomany.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,6 +9,10 @@ import java.util.List;
         name = "Company.retrieveCompanyByFirstThreeCharactersOfCompanyName",
         query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :THREECHARACTERS",
         resultClass = Company.class
+)
+@NamedQuery(
+        name = "Company.retrieveCompanyByAnyPartOfCompanyName",
+        query = "FROM Company WHERE companyName LIKE :VALUE"
 )
 @Entity
 @Table(name = "COMPANIES")

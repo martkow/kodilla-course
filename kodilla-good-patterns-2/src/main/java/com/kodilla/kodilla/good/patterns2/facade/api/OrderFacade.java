@@ -1,0 +1,90 @@
+package com.kodilla.kodilla.good.patterns2.facade.api;
+
+import com.kodilla.kodilla.good.patterns2.facade.ShopService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+
+/**
+ * The most advanced class is the facade service class – OrderFacade.
+ * Its content is shown below. First, the header and class fields:
+ * The OrderFacade class uses the "internal API," which is a bean of the ShopService class.
+ * It is also a bean itself (annotated with @Service), so it can be injected by SpringBoot in the application's user code that connects to it.
+ * The OrderFacade class also creates a logger based on the slf4j library.
+ * The facade class exposes only one method: processOrder(final OrderDto order, final Long userId),
+ * which takes two arguments – the order transport object and the user identifier.<br><br>
+ *
+ * In summary, the "Facade" pattern allows for the creation of a simplified interface that will be visible externally.
+ * This way, you can hide very complex code behind a simple interface that a user or another program can easily utilize.
+ * This is useful wherever we want to hide internal installations, pipes, cables, and wires behind a nice and simple facade.
+ */
+@Service
+public class OrderFacade {
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderFacade.class);
+    private final ShopService shopService;
+
+    @Autowired
+    public OrderFacade(ShopService shopService) {
+        this.shopService = shopService;
+    }
+
+    /**
+     * The processOrder method handles all the communication with the internal API of our store.
+     * If needed, it generates appropriate exceptions (using constants with messages).
+     * It logs every operation using a logger.
+     * @param order
+     * @param userId
+     * @throws OrderProcessingException
+     */
+    public void processOrder(final OrderDto order, final Long userId) throws OrderProcessingException {
+        boolean wasError = false;
+
+        Long orderId = shopService.openOrder(userId);
+        LOGGER.info("Registering new order, ID: " + orderId);
+
+        if (orderId < 0) {
+            LOGGER.error(OrderProcessingException.ERR_NOT_AUTHORISED);
+            wasError = true;
+            throw new OrderProcessingException(OrderProcessingException.ERR_NOT_AUTHORISED);
+        }
+
+        try {
+            for (ItemDto orderItem : order.getItems()) {
+                LOGGER.info("Adding item " + orderItem.getProductId() + ", " + orderItem.getQuantity() + " pcs");
+                shopService.addItem(orderId, orderItem.getProductId(), orderItem.getQuantity());
+            }
+
+            BigDecimal value = shopService.calculateValue(orderId);
+            LOGGER.info("Order value is: " + value + " USD");
+
+            if (!shopService.doPayment(orderId)) {
+                LOGGER.error(OrderProcessingException.ERR_PAYMENT_REJECTED);
+                wasError = true;
+                throw new OrderProcessingException(OrderProcessingException.ERR_PAYMENT_REJECTED);
+            }
+            LOGGER.info("Payment for order was done");
+
+            if (!shopService.verifyOrder(orderId)) {
+                LOGGER.error(OrderProcessingException.ERR_VERIFICATION_ERROR);
+                wasError = true;
+                throw new OrderProcessingException(OrderProcessingException.ERR_VERIFICATION_ERROR);
+            }
+            LOGGER.info("Order is ready to submit");
+
+            if (!shopService.submitOrder(orderId)) {
+                LOGGER.error(OrderProcessingException.ERR_SUBMITTING_ERROR);
+                wasError = true;
+                throw new OrderProcessingException(OrderProcessingException.ERR_SUBMITTING_ERROR);
+            }
+            LOGGER.info("Order " + orderId + " submitted");
+        } finally {
+            if (wasError) {
+                LOGGER.info("Cancelling order " + orderId);
+                shopService.cancelOrder(orderId);
+            }
+        }
+    }
+}
