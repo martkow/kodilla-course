@@ -4,6 +4,7 @@ import com.kodilla.kodilla.good.patterns2.facade.ShopService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -21,6 +22,7 @@ import java.math.BigDecimal;
  * This way, you can hide very complex code behind a simple interface that a user or another program can easily utilize.
  * This is useful wherever we want to hide internal installations, pipes, cables, and wires behind a nice and simple facade.
  */
+@EnableAspectJAutoProxy //  Enable aspect support for this specific class. The class cannot be 'final'.
 @Service
 public class OrderFacade {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderFacade.class);
@@ -39,7 +41,7 @@ public class OrderFacade {
      * @param userId
      * @throws OrderProcessingException
      */
-    public void processOrder(final OrderDto order, final Long userId) throws OrderProcessingException {
+    public void processOrder(OrderDto order, Long userId) throws OrderProcessingException {
         boolean wasError = false;
 
         Long orderId = shopService.openOrder(userId);
