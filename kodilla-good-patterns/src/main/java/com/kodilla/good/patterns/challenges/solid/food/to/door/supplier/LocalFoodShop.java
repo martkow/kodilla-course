@@ -6,24 +6,24 @@ import com.kodilla.good.patterns.challenges.solid.food.to.door.supplier.product.
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtraFoodShop implements Supplier {
+public class LocalFoodShop implements Supplier {
     private String name;
 
-    public ExtraFoodShop(String name) {
+    public LocalFoodShop(String name) {
         this.name = name;
     }
 
     @Override
     public OrderRequest retrieve() {
         List<Product> products = new ArrayList<>(List.of(
-                new Product("Olive oil", 15),
-                new Product("Green Olives", 20)
+                new Product("Carrot", 100),
+                new Product("Apple", 20)
         ));
         return new OrderRequest(this, products);
     }
 
     @Override
     public boolean process(OrderRequest orderRequest) {
-        return false;
+        return true;
     }
 }

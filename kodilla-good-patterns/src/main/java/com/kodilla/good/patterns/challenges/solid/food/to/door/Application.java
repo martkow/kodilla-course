@@ -5,8 +5,5 @@ import com.kodilla.good.patterns.challenges.solid.food.to.door.supplier.ExtraFoo
 
 public class Application {
     public static void main(String[] args) {
-
-        OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShop("Extra food shop"));
-        orderProcessor.processOrder();
     }
 }
