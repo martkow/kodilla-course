@@ -12,7 +12,8 @@ import java.util.List;
 )
 @NamedQuery(
         name = "Company.retrieveCompanyByAnyPartOfCompanyName",
-        query = "FROM Company WHERE companyName LIKE :VALUE"
+    //    query = "FROM Company WHERE companyName LIKE :VALUE"
+        query = "FROM Company WHERE companyName LIKE CONCAT('%',:ARG,'%')"
 )
 @Entity
 @Table(name = "COMPANIES")

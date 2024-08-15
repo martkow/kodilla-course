@@ -29,10 +29,12 @@ public class SearchService {
     }
 
     public List<EmployeeDto> searchEmployee(String searchValue) {
-        return employeeToEmployeeDtoMapper.mapToEmployeeDto(employeeDao.retrieveEmployeeByAnyPartOfEmployeeLastname("%" + searchValue + "%"));
+//        return employeeToEmployeeDtoMapper.mapToEmployeeDto(employeeDao.retrieveEmployeeByAnyPartOfEmployeeLastname("%" + searchValue + "%"));
+        return employeeToEmployeeDtoMapper.mapToEmployeeDto(employeeDao.retrieveEmployeeByAnyPartOfEmployeeLastname(searchValue));
     }
 
     public List<CompanyDto> searchCompany(String searchValue) {
-        return companyToCompanyDtoMapper.mapToCompanyDto(companyDao.retrieveCompanyByAnyPartOfCompanyName("%" + searchValue + "%"));
+//        return companyToCompanyDtoMapper.mapToCompanyDto(companyDao.retrieveCompanyByAnyPartOfCompanyName("%" + searchValue + "%"));
+        return companyToCompanyDtoMapper.mapToCompanyDto(companyDao.retrieveCompanyByAnyPartOfCompanyName(searchValue));
     }
 }
