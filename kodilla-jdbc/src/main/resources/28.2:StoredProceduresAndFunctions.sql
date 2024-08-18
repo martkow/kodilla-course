@@ -1,3 +1,12 @@
+/*
+ Show all procedures and functions.
+ */
+SHOW PROCEDURE STATUS;
+SHOW FUNCTION STATUS;
+-- Show details of the procedure or function
+SHOW CREATE PROCEDURE GetUserName;
+SHOW CREATE FUNCTION VipLevel;
+
 /* The command SET GLOBAL log_bin_trust_function_creators=1;
    is used in MySQL or MariaDB to allow users without the SUPER privilege to create or alter
    stored functions and triggers.
