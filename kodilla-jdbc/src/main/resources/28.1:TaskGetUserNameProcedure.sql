@@ -1,0 +1,19 @@
+/*
+ Task 28.1: Get user name by Id.
+ */
+DROP PROCEDURE IF EXISTS GetUserName;
+DELIMITER $$
+
+CREATE PROCEDURE GetUserName(ID INT)
+BEGIN
+    IF ID <= 0 THEN
+        SELECT 'Invalid ID' AS MESSAGE;
+    ELSE
+        SELECT CONCAT(USERS.FIRSTNAME, ' ', USERS.LASTNAME) AS NAME FROM USERS WHERE USERS.ID = ID;
+    END IF;
+END $$
+
+DELIMITER ;
+
+CALL GetUserName(0);
+CALL GetUserName(2);
