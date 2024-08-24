@@ -24,26 +24,12 @@ import java.time.temporal.ChronoUnit;
 public class GoogleTestingApp {
     public static final String SEARCH_FIELD = "q"; // [1]
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // We create a driver object. Then we call its get(String url) method, which starts the browser and goes to the specified website address.
         WebDriver driverChrome = WebDriverConfig.getDriver(WebDriverConfig.CHROME); // [2]
         driverChrome.get("https://www.google.com");  // [3]
-
+        Thread.sleep(5000);
         driverChrome.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div")).click(); // [4]
-
-
-        WebDriverWait wait = new WebDriverWait(driverChrome, Duration.ofSeconds(30));
-        // Wait for the shadow host to be present
-        WebElement shadowHost = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("search-engine-choice-app")));
-        // Access the shadow root
-        JavascriptExecutor js = (JavascriptExecutor) driverChrome;
-        WebElement shadowRoot = (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
-        // Wait for the cr-radio-group element to be present in the shadow DOM
-        WebElement crRadioGroup = (WebElement) js.executeScript("return arguments[0].querySelector('cr-radio-group')", shadowRoot);
-        // Find the radio button with aria-label "Google"
-        WebElement radioButton = (WebElement) js.executeScript("return arguments[0].querySelector('cr-radio-button[aria-label=\"Google\"]')", crRadioGroup);
-        // Click on the radio button
-        radioButton.click();
 
          WebElement searchField = driverChrome.findElement(By.name(SEARCH_FIELD));      // [5]
          searchField.sendKeys("Kodilla");  // [6]

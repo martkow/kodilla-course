@@ -3,6 +3,7 @@ package com.kodilla.testing2.config;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
 /**
@@ -22,7 +23,7 @@ public class WebDriverConfig {
         WebDriverManager.chromedriver().setup();
 
         if (driver.equals(CHROME)) {
-            return new ChromeDriver();
+            return new ChromeDriver(new ChromeOptions().addArguments("--disable-search-engine-choice-screen"));
         } else if (driver.equals(SAFARI)) {
             return new SafariDriver();
         } else {
